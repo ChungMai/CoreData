@@ -45,7 +45,7 @@ class MigrationVC: UIViewController {
             
         }
         else {
-            print("\(#function) FAILED to get note")
+            print("\(#function) failed to get note")
         }
     }
 

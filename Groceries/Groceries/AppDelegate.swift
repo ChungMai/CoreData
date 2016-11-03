@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //ddemoDelete()
         //demoSelectTemplate()
         //demoInsertMeasurement()
-        demoFetchAmount()
+        demo()
         return true
     }
 
@@ -153,6 +153,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("ERROR executing a fetch request: \(error)")
         }
     }
-
+    
+    func demo () {
+        let request : NSFetchRequest<Unit> = Unit.fetchRequest()
+        request.fetchLimit = 50
+        do{
+            if let measurements = try CDHelper.shared.context.fetch(request) as? [Unit]{
+                for measurement in measurements{
+                    print("Amount: \(measurement.name)")
+                }
+            }
+        }
+        catch {
+            print("ERROR executing a fetch request: \(error)")
+        }
+    }
+    
 }
 
